@@ -26,6 +26,12 @@
 ;; only support + and *
 ;; but it can beyond rig
 (define (calculator expr)
+  ;;PreList a b = Nil | Cons a b
+  (set! $mapRec
+	(λ(f l)
+	  (cond
+	   [(null? l) l]
+	   [else (cons (car l) (f (cdr l)))])))
   (((hyloT genT parseT) (string-split expr #\space)) '()))
 
 (define (print-stack l)
